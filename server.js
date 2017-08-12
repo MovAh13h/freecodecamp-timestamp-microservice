@@ -3,12 +3,8 @@ var app = server();
 var moment = require('moment');
 var fs = require('fs');
 var path = require('path');
-
 var port = process.env.PORT || 3500;
 
-app.listen(port, function(){
-  console.log("[SERVER] Server running at " + port);
-});
 
 app.get('/', function(req, res) {
   var fileName = path.join(__dirname,'views', 'index.html');
@@ -28,4 +24,8 @@ app.get('/:string', function(req,res) {
   } else {
     res.json({ unix: null, natural: null });
   }
+});
+
+app.listen(port, function(){
+  console.log("[SERVER] Server running at " + port);
 });
